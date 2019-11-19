@@ -1,0 +1,7 @@
+-Warray-bounds
+-Wshadow
+-Wsurprising
+-Wtabs
+-Wunderflow
+-Wintrinsic-shadow
+-Werror

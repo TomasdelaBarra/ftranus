@@ -1,0 +1,8 @@
+-march=core2
+-msse3
+-mfpmath=sse
+-falign-loops
+-finline-functions
+-funswitch-loops
+-fno-signed-zeros
+-ftree-loop-distribution

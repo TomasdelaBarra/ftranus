@@ -1,0 +1,94 @@
+<!-- 
+
+Copyright (C) 1985-2001 Modelistica, Caracas.
+All rights reserved.
+
+-->
+<project name="TRANUS Model Executables"
+  default="all" 
+  basedir=".">
+ 
+  <property name="release.ini" value="../release.ini" />
+
+  <property name="version"      value="?{${release.ini}:releases:current}" />
+  <property name="version.data" value="?{${release.ini}:releases:${version}}" />
+
+  <regexp property="build"         text="${version}"      pattern="[0-9]+$" />
+  <regexp property="tag"           text="${version.data}" pattern="^.*,(.*)$" subst="\1" />
+  <regexp property="comma.version" text="${version}"      pattern="\."        subst=","  />
+
+  <property name="dotpattern"  value="^([^.]+)\.([^.]+)\.([^.]+)$" />
+  <regexp property="vermajor"  text="${version}" pattern="${dotpattern}" subst="\1" />
+  <regexp property="verminor"  text="${version}" pattern="${dotpattern}" subst="\2" />
+  <regexp property="revision"  text="${version}" pattern="${dotpattern}" subst="\3" />
+
+  <regexp property="datetag" 
+          text="${version.data}"       
+          pattern="^(.*),.*$"        
+          subst="\1"  
+  />
+
+  <regexp property="nametag" 
+          text="${version.data}"       
+          pattern="^.*,"        
+          subst=""  
+  />
+    
+  <property name="scratch.dir"    value="../obj"/>
+  <property name="bin.dir"        value="../bin"/>
+  <property name="etc.dir"        value="etc"/>
+
+  <property name="compile.mode"   value="FASTCOMPILE" />
+
+  <tstamp>
+    <format property="when"    pattern="yyyy,mm,dd,HH,nn,ss" />
+  </tstamp>
+
+  <property name="app.name"       value="tranus"   />
+
+  <property name="make.exe" value="make" />
+  
+
+  <target name="prepare" 
+	  depends="versioninfo"
+          description="build directory structure" >
+     <mkdir dir="obj" />
+     <mkdir dir="bin" />
+  </target>
+
+ <target name="versioninfo">
+     <echo message="version ${version} ${datetag} ${nametag}" />
+     <echo input="${etc.dir}/release.template.f90" file="release.f90" />
+  </target>
+
+  <target name="rcfiles" 
+          depends="prepare"
+          foreach="*.f90" >
+     <regexp property="program" 
+	     text="${each}" 
+             pattern="^([^.]+).*"
+             subst="\1" 
+             overwrite="true" 
+             toupper="yes"
+             />
+     <!-- 
+     <echo message="${program}" />
+      -->
+     <echo input="${etc.dir}/Version.template.rc" file="obj/${program}.rc" />
+  </target>
+
+  <target name="clean">
+     <delete dir="obj" />
+     <delete dir="bin" />
+  </target>
+
+  <target name="compile" depends="prepare,rcfiles" >
+	  <exec executable="${make.exe}" />
+  </target>
+
+  <target name="all" depends="compile" />
+  
+  <target name="dist" depends="all" >
+  </target>
+
+</project>

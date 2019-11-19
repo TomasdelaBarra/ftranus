@@ -1,0 +1,27 @@
+2 VERSIONINFO
+FILEVERSION ${comma.version}
+PRODUCTVERSION ${comma.version}
+FILETYPE VFT_APP
+{
+ BLOCK "StringFileInfo"
+ {
+  BLOCK "040904E4"
+  {
+   VALUE "CompanyName", "Modelistica http://www.modelistica.com\000\000"
+   VALUE "FileDescription", "\000"
+   VALUE "FileVersion", "${version}"
+   VALUE "InternalName", "${program}"
+   VALUE "LegalCopyright", "Copyright © 1983-${year} Modelistica\nCopyright © 1983-${year} Tomas de la Barra\nCopyright © 1983-2002 Beatriz Perez\nCopyright © 1985-${year} Juancarlo Añez\nSome rights reserved.\000\000"
+   VALUE "OriginalFilename", "\000"
+   VALUE "ProductName", "TRANUS® Transport and Land Use Model\000\000"
+   VALUE "ProductVersion", "${version}"
+  }
+ }
+}
+
+/*
+*/
+
+100 ICON PRELOAD MOVEABLE DISCARDABLE ..\SHARE\RES\TRANUS.ICO
+
+TRANUS ICON PRELOAD MOVEABLE DISCARDABLE ..\SHARE\RES\TRANUS.ICO

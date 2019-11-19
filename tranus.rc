@@ -1,0 +1,21 @@
+2 VERSIONINFO
+FILEVERSION 12,0,3
+PRODUCTVERSION 12,0,3
+FILETYPE VFT_APP
+{
+ BLOCK "StringFileInfo"
+ {
+  BLOCK "040904E4"
+  {
+   VALUE "CompanyName", "Modelistica http://www.modelistica.com\000\000"
+   VALUE "FileDescription", "\000"
+   VALUE "FileVersion", "12.0.3\000\000"
+   VALUE "InternalName", "TUS v12.0.3\000"
+   VALUE "LegalCopyright", "Copyright © 1983-2012 Modelistica\nCopyright © 1983-2012 Tomas de la Barra\nCopyright © 1983-2012 Tomas de la Barra\nCopyright © 1983-2002 Beatriz Perez\nCopyright © 1985-2012 Juancarlo Añez\nSome rights reserved.\000\000"
+   VALUE "OriginalFilename", "\000"
+   VALUE "ProductName", "TRANUS® Transport and Land Use Modeling System\000\000"
+   VALUE "ProductVersion", "12.0.3\000\000"
+  }
+ }
+}
+
